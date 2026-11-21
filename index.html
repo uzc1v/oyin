@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>LEVELKIDS — Ta'limiy o'yin platformasi</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Loading -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="loader">
+      <div class="loader-circle"></div>
+      <div class="loader-logo">LEVELKIDS</div>
+    </div>
+  </div>
+
+  <!-- Auth Modal -->
+  <div id="auth-modal" class="modal hidden">
+    <div class="modal-content auth-card">
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="login" id="tab-login">Kirish</button>
+        <button class="auth-tab" data-tab="register" id="tab-register">Ro'yxatdan o'tish</button>
+      </div>
+
+      <form id="login-form" class="auth-form">
+        <div class="form-group">
+          <label for="login-username">Login yoki Email</label>
+          <input type="text" id="login-username" required autocomplete="username" />
+        </div>
+        <div class="form-group">
+          <label for="login-password">Parol</label>
+          <input type="password" id="login-password" required autocomplete="current-password" />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Kirish</button>
+      </form>
+
+      <form id="register-form" class="auth-form hidden">
+        <div class="form-group">
+          <label for="reg-name">Ism</label>
+          <input type="text" id="reg-name" required />
+        </div>
+        <div class="form-group">
+          <label for="reg-username">Foydalanuvchi nomi</label>
+          <input type="text" id="reg-username" required />
+        </div>
+        <div class="form-group">
+          <label for="reg-email">Email</label>
+          <input type="email" id="reg-email" required />
+        </div>
+        <div class="form-group">
+          <label for="reg-password">Parol</label>
+          <input type="password" id="reg-password" required minlength="4" />
+        </div>
+        <div class="form-group">
+          <label for="reg-age">Yosh</label>
+          <select id="reg-age" required>
+            <option value="">Tanlang</option>
+            <option value="3">3</option><option value="4">4</option><option value="5">5</option>
+            <option value="6">6</option><option value="7">7</option><option value="8">8</option>
+            <option value="9">9</option><option value="10">10</option><option value="11">11</option>
+            <option value="12">12</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Avatar tanlang</label>
+          <div class="avatar-picker" id="avatar-picker"></div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Ro'yxatdan o'tish</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- App Shell -->
+  <div id="app" class="app hidden">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="logo">LEVEL<span>KIDS</span></div>
+      </div>
+      <div class="header-center">
+        <div class="level-badge" id="header-level">Level 1</div>
+        <div class="points-badge" id="header-points">0 ⭐</div>
+      </div>
+      <div class="header-right">
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="uz">UZ</button>
+          <button class="lang-btn" data-lang="ru">RU</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <button class="profile-btn" id="profile-btn">
+          <img id="header-avatar" src="" alt="Avatar" class="header-avatar" />
+        </button>
+      </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <nav class="nav">
+        <a href="#" class="nav-item active" data-page="home">
+          <span class="nav-icon">🏠</span>
+          <span class="nav-text" data-i18n="nav_home">Bosh sahifa</span>
+        </a>
+        <a href="#" class="nav-item" data-page="games">
+          <span class="nav-icon">🎮</span>
+          <span class="nav-text" data-i18n="nav_games">O'yinlar</span>
+        </a>
+        <a href="#" class="nav-item" data-page="worlds">
+          <span class="nav-icon">🌍</span>
+          <span class="nav-text" data-i18n="nav_worlds">Dunyolar</span>
+        </a>
+        <a href="#" class="nav-item" data-page="shop">
+          <span class="nav-icon">🛒</span>
+          <span class="nav-text" data-i18n="nav_shop">Do'kon</span>
+        </a>
+        <a href="#" class="nav-item" data-page="profile">
+          <span class="nav-icon">👤</span>
+          <span class="nav-text" data-i18n="nav_profile">Profil</span>
+        </a>
+        <a href="#" class="nav-item" data-page="parent">
+          <span class="nav-icon">👨‍👩‍👧</span>
+          <span class="nav-text" data-i18n="nav_parent">Ota-ona paneli</span>
+        </a>
+        <a href="#" class="nav-item" data-page="leaderboard">
+          <span class="nav-icon">🏆</span>
+          <span class="nav-text" data-i18n="nav_leaderboard">Reyting</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="btn btn-outline btn-block" id="logout-btn" data-i18n="logout">Chiqish</button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main" id="main-content">
+      <!-- Pages will be injected here -->
+    </main>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast hidden"></div>
+
+  <!-- Result Modal -->
+  <div id="result-modal" class="modal hidden">
+    <div class="modal-content result-card">
+      <div class="result-emoji" id="result-emoji">🎉</div>
+      <h2 id="result-title">Ajoyib!</h2>
+      <p id="result-score">Ball: 0</p>
+      <div class="result-actions">
+        <button class="btn btn-primary" id="result-replay" data-i18n="play_again">Qayta o'ynash</button>
+        <button class="btn btn-outline" id="result-home" data-i18n="back_home">Bosh sahifa</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/games.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
